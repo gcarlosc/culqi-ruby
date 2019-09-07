@@ -3,6 +3,7 @@ require 'operation/get'
 require 'operation/post'
 require 'operation/delete'
 require 'operation/update'
+require 'operation/confirm_order'
 
 require 'culqi/version'
 require 'culqi/iins'
@@ -15,6 +16,7 @@ require 'culqi/plan'
 require 'culqi/subscription'
 require 'culqi/refund'
 require 'culqi/transfer'
+require 'culqi/order'
 
 module Culqi
 
