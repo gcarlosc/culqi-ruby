@@ -7,14 +7,13 @@ module Culqi::Post
   end
 
   def create(params={})
-    key = ''
-    if @url.include? 'token'
-      key = Culqi.public_key
-    else
-      key = Culqi.secret_key
-    end
-    response = Culqi.connect(@url, key, params, 'post', Culqi::READ_TIMEOUT)
-    return response.read_body
+    response = if @url.include? 'token'
+                 key = Culqi.public_key
+                 Culqi.connect(@url, key, params, 'post', Culqi::READ_TIMEOUT, true)
+               else
+                 key = Culqi.secret_key
+                 Culqi.connect(@url, key, params, 'post', Culqi::READ_TIMEOUT)
+               end
+    return OpenStruct.new(JSON.parse(response.read_body))
   end
-
 end
