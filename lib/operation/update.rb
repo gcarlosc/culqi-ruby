@@ -8,7 +8,6 @@ module Culqi::Update
 
   def update(id, params={})
     response = Culqi.connect("#{@url}#{id}/", Culqi.secret_key, params, 'patch', Culqi::READ_TIMEOUT)
-    return response.read_body
+    return OpenStruct.new(JSON.parse(response.read_body))
   end
-
 end
