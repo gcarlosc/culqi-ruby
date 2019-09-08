@@ -7,7 +7,7 @@ module Culqi::ConfirmOrder
   end
 
   def confirm(id)
-    response = Culqi.connect("#{@url}#{id}", Culqi.secret_key, nil, 'post', Culqi::READ_TIMEOUT)
+    response = Culqi.connect("#{@url}#{id}/confirm", Culqi.secret_key, nil, 'post', Culqi::READ_TIMEOUT)
     return OpenStruct.new(JSON.parse(response.read_body))
   end
 end
