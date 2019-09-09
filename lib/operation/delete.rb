@@ -8,6 +8,6 @@ module Culqi::Delete
 
   def delete(id)
     response = Culqi.connect("#{@url}#{id}/", Culqi.secret_key, nil, 'delete', Culqi::READ_TIMEOUT)
-    return OpenStruct.new(JSON.parse(response.read_body), symbolize_names: true)
+    return OpenStruct.new(JSON.parse(response.read_body, symbolize_names: true))
   end
 end

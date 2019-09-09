@@ -8,6 +8,6 @@ module Culqi::Get
 
   def get(id)
     response = Culqi.connect("#{@url}#{id}/", Culqi.secret_key, nil, 'get', Culqi::READ_TIMEOUT)
-    return OpenStruct.new(JSON.parse(response.read_body), symbolize_names: true)
+    return OpenStruct.new(JSON.parse(response.read_body, symbolize_names: true))
   end
 end
